@@ -13,7 +13,7 @@ import java.util.Date;
 public class Mahasiswa {
     private String nim;
     private String nama_lengkap;
-    private String id_pendaftaran;
+    private Pendaftaran pendaftaran;
     private String tempat_lahir;
     private Date tanggal_lahir;
     private String jenis_kelamin;
@@ -23,10 +23,10 @@ public class Mahasiswa {
     public Mahasiswa() {
     }
 
-    public Mahasiswa(String nim, String nama_lengkap, String id_pendaftaran, String tempat_lahir, Date tanggal_lahir, String jenis_kelamin, String alamat, String no_telepon) {
+    public Mahasiswa(String nim, String nama_lengkap, Pendaftaran pendaftaran, String tempat_lahir, Date tanggal_lahir, String jenis_kelamin, String alamat, String no_telepon) {
         this.nim = nim;
         this.nama_lengkap = nama_lengkap;
-        this.id_pendaftaran = id_pendaftaran;
+        this.pendaftaran = pendaftaran;
         this.tempat_lahir = tempat_lahir;
         this.tanggal_lahir = tanggal_lahir;
         this.jenis_kelamin = jenis_kelamin;
@@ -50,12 +50,12 @@ public class Mahasiswa {
         this.nama_lengkap = nama_lengkap;
     }
 
-    public String getId_pendaftaran() {
-        return id_pendaftaran;
+    public Pendaftaran getId_pendaftaran() {
+        return pendaftaran;
     }
 
-    public void setId_pendaftaran(String id_pendaftaran) {
-        this.id_pendaftaran = id_pendaftaran;
+    public void setId_pendaftaran( Pendaftaran pendaftaran) {
+        this.pendaftaran = pendaftaran;
     }
 
     public String getTempat_lahir() {
@@ -100,7 +100,7 @@ public class Mahasiswa {
 
     @Override
     public String toString() {
-        return "Mahasiswa{" + "nim=" + nim + ", nama_lengkap=" + nama_lengkap + ", id_pendaftaran=" + id_pendaftaran + ", tempat_lahir=" + tempat_lahir + ", tanggal_lahir=" + tanggal_lahir + ", jenis_kelamin=" + jenis_kelamin + ", alamat=" + alamat + ", no_telepons=" + no_telepon + '}';
+        return "Mahasiswa{" + "nim=" + nim + ", nama_lengkap=" + nama_lengkap + ", pendaftaran=" + pendaftaran + ", tempat_lahir=" + tempat_lahir + ", tanggal_lahir=" + tanggal_lahir + ", jenis_kelamin=" + jenis_kelamin + ", alamat=" + alamat + ", no_telepons=" + no_telepon + '}';
     }
      
 }
