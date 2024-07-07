@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author acer
  */
-public class Pendaftaran {
+    public class Pendaftaran {
     private Siswa siswa;
     private String id_pendaftaran;
     private Date tanggal_daftar;
