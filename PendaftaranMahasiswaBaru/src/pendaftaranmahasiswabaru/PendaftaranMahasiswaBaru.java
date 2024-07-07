@@ -4,6 +4,10 @@
  */
 package pendaftaranmahasiswabaru;
 
+import java.util.ArrayList;
+import pendaftaranmahasiswabaru.Entity.Siswa;
+import pendaftaranmahasiswabaru.koneksi.Data;
+import java.util.List;
 /**
  *
  * @author acer
@@ -15,6 +19,9 @@ public class PendaftaranMahasiswaBaru {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        List<Siswa> s = new ArrayList<Siswa>();
+        s = Data.getSiswa();
+        s.forEach(e-> System.out.println(e.toString()));
     }
     
 }
