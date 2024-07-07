@@ -12,30 +12,30 @@ import java.util.Date;
  */
 public class Siswa {
     private String id_Siswa;
-    private String nama_Lengkap;
-    private String tempat_Lahir;
-    private Date tanggal_Lahir;
-    private String jenis_Kelamin;
+    private String nama_lengkap;
+    private String tempat_lahir;
+    private Date tanggal_lahir;
+    private String jenis_kelamin;
     private String alamat;
-    private String asal_Sekolah;
-    private String jurusan_Sekolah;
-    private float nilai_UN;
-    private float nilai_Raport;
+    private String asal_sekolah;
+    private String jurusan_sekolah;
+    private float nilai_un;
+    private float nilai_raport;
 
     public Siswa() {
     }
 
-    public Siswa(String id_Siswa, String nama_Lengkap, String tempat_Lahir, Date tanggal_Lahir, String jenis_Kelamin, String alamat, String asal_Sekolah, String jurusan_Sekolah, float nilai_UN, float nilai_Raport) {
+    public Siswa(String id_Siswa, String nama_lengkap, String tempat_lahir, Date tanggal_lahir, String jenis_kelamin, String alamat, String asal_sekolah, String jurusan_sekolah, float nilai_un, float nilai_raport) {
         this.id_Siswa = id_Siswa;
-        this.nama_Lengkap = nama_Lengkap;
-        this.tempat_Lahir = tempat_Lahir;
-        this.tanggal_Lahir = tanggal_Lahir;
-        this.jenis_Kelamin = jenis_Kelamin;
+        this.nama_lengkap = nama_lengkap;
+        this.tempat_lahir = tempat_lahir;
+        this.tanggal_lahir = tanggal_lahir;
+        this.jenis_kelamin = jenis_kelamin;
         this.alamat = alamat;
-        this.asal_Sekolah = asal_Sekolah;
-        this.jurusan_Sekolah = jurusan_Sekolah;
-        this.nilai_UN = nilai_UN;
-        this.nilai_Raport = nilai_Raport;
+        this.asal_sekolah = asal_sekolah;
+        this.jurusan_sekolah = jurusan_sekolah;
+        this.nilai_un = nilai_un;
+        this.nilai_raport = nilai_raport;
     }
 
     public String getId_Siswa() {
@@ -46,36 +46,36 @@ public class Siswa {
         this.id_Siswa = id_Siswa;
     }
 
-    public String getNama_Lengkap() {
-        return nama_Lengkap;
+    public String getNama_lengkap() {
+        return nama_lengkap;
     }
 
-    public void setNama_Lengkap(String nama_Lengkap) {
-        this.nama_Lengkap = nama_Lengkap;
+    public void setNama_lengkap(String nama_lengkap) {
+        this.nama_lengkap = nama_lengkap;
     }
 
-    public String getTempat_Lahir() {
-        return tempat_Lahir;
+    public String getTempat_lahir() {
+        return tempat_lahir;
     }
 
-    public void setTempat_Lahir(String tempat_Lahir) {
-        this.tempat_Lahir = tempat_Lahir;
+    public void setTempat_lahir(String tempat_lahir) {
+        this.tempat_lahir = tempat_lahir;
     }
 
-    public Date getTanggal_Lahir() {
-        return tanggal_Lahir;
+    public Date getTanggal_lahir() {
+        return tanggal_lahir;
     }
 
-    public void setTanggal_Lahir(Date tanggal_Lahir) {
-        this.tanggal_Lahir = tanggal_Lahir;
+    public void setTanggal_lahir(Date tanggal_lahir) {
+        this.tanggal_lahir = tanggal_lahir;
     }
 
-    public String getJenis_Kelamin() {
-        return jenis_Kelamin;
+    public String getJenis_kelamin() {
+        return jenis_kelamin;
     }
 
-    public void setJenis_Kelamin(String jenis_Kelamin) {
-        this.jenis_Kelamin = jenis_Kelamin;
+    public void setJenis_kelamin(String jenis_kelamin) {
+        this.jenis_kelamin = jenis_kelamin;
     }
 
     public String getAlamat() {
@@ -86,36 +86,42 @@ public class Siswa {
         this.alamat = alamat;
     }
 
-    public String getAsal_Sekolah() {
-        return asal_Sekolah;
+    public String getAsal_sekolah() {
+        return asal_sekolah;
     }
 
-    public void setAsal_Sekolah(String asal_Sekolah) {
-        this.asal_Sekolah = asal_Sekolah;
+    public void setAsal_sekolah(String asal_sekolah) {
+        this.asal_sekolah = asal_sekolah;
     }
 
-    public String getJurusan_Sekolah() {
-        return jurusan_Sekolah;
+    public String getJurusan_sekolah() {
+        return jurusan_sekolah;
     }
 
-    public void setJurusan_Sekolah(String jurusan_Sekolah) {
-        this.jurusan_Sekolah = jurusan_Sekolah;
+    public void setJurusan_sekolah(String jurusan_sekolah) {
+        this.jurusan_sekolah = jurusan_sekolah;
     }
 
-    public float getNilai_UN() {
-        return nilai_UN;
+    public float getNilai_un() {
+        return nilai_un;
     }
 
-    public void setNilai_UN(float nilai_UN) {
-        this.nilai_UN = nilai_UN;
+    public void setNilai_un(float nilai_un) {
+        this.nilai_un = nilai_un;
     }
 
-    public float getNilai_Raport() {
-        return nilai_Raport;
+    public float getNilai_raport() {
+        return nilai_raport;
     }
 
-    public void setNilai_Raport(float nilai_Raport) {
-        this.nilai_Raport = nilai_Raport;
+    public void setNilai_raport(float nilai_raport) {
+        this.nilai_raport = nilai_raport;
     }
+
+    @Override
+    public String toString() {
+        return "Siswa{" + "id_Siswa=" + id_Siswa + ", nama_lengkap=" + nama_lengkap + ", tempat_lahir=" + tempat_lahir + ", tanggal_lahir=" + tanggal_lahir + ", jenis_kelamin=" + jenis_kelamin + ", alamat=" + alamat + ", asal_sekolah=" + asal_sekolah + ", jurusan_sekolah=" + jurusan_sekolah + ", nilai_un=" + nilai_un + ", nilai_raport=" + nilai_raport + '}';
+    }
+
     
 }
