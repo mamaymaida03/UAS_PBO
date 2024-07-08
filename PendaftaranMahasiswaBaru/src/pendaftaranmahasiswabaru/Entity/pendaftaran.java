@@ -27,6 +27,14 @@ import java.util.Date;
         this.status_pendaftaran = status_pendaftaran;
         this.prodi = prodi;
     }
+    public Pendaftaran(Siswa siswa, String id_pendaftaran,Date tanggal_daftar, String status_pendaftaran, ProgramStudi prodi) {
+        this.siswa = siswa;
+        this.id_pendaftaran = id_pendaftaran;
+        this.tanggal_daftar = tanggal_daftar;
+        this.status_pendaftaran = status_pendaftaran;
+        this.prodi = prodi;
+    }
+    
 
     public Siswa get_siswa() {
         return siswa;

@@ -33,4 +33,40 @@ public class Data {
             return null;
         }
     }
+    public static List<ProgramStudi> getProgramStudi(){
+        List<ProgramStudi> ListProgramStudi = new ArrayList<>();
+        try{
+            Connection c = StartConnection.getConn();
+            String sql="select * from program_studi";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            ProgramStudi s = new ProgramStudi(rs.getString("id_prodi"),rs.getString("nama_prodi"),rs.getString("fakultas"),rs.getInt("kuota"));
+            ListProgramStudi.add(s);
+            }
+            return ListProgramStudi;
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            return null;
+        }
+    }
+    public static List<Pendaftaran> getPendaftaran(){
+        List<Pendaftaran> ListPendaftaran = new ArrayList<>();
+        try{
+            Connection c = StartConnection.getConn();
+            String sql="select * from pendaftaran as pen left join program_studi as pro on pen.id_prodi=pro.id_prodi left join siswa as sis on sis.id_siswa = pen.id_siswa";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            Siswa sis = new Siswa(rs.getString("id_siswa"), rs.getString("nama_lengkap"), rs.getString("tempat_lahir"),rs.getDate("tanggal_lahir"), rs.getString("jenis_kelamin"), rs.getString("alamat"), rs.getString("asal_sekolah"), rs.getString("jurusan_sekolah"), rs.getFloat("nilai_un"), rs.getFloat("nilai_raport"));
+            ProgramStudi p = new ProgramStudi(rs.getString("id_prodi"),rs.getString("nama_prodi"),rs.getString("fakultas"),rs.getInt("kuota"));
+            Pendaftaran s = new Pendaftaran(sis,rs.getString("id_pendaftaran"),rs.getDate("tanggal_daftar"),rs.getString("status_pendaftaran"),p);
+            ListPendaftaran.add(s);
+            }
+            return ListPendaftaran;
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            return null;
+        }
+    }
 }

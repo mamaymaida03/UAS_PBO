@@ -4,6 +4,12 @@
  */
 package pendaftaranmahasiswabaru.UI;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import pendaftaranmahasiswabaru.Entity.Pendaftaran;
+import pendaftaranmahasiswabaru.koneksi.Data;
+
 /**
  *
  * @author SUMARWAN
@@ -13,9 +19,28 @@ public class ListPendaftarann extends javax.swing.JPanel {
     /**
      * Creates new form ListPendaftarann
      */
+
+    private DefaultTableModel data ;
+    
     public ListPendaftarann() {
         initComponents();
+        data = (DefaultTableModel) jTable1.getModel();
+        data.setRowCount(0);
+        List<Pendaftaran> s = new ArrayList<Pendaftaran>();
+        s = Data.getPendaftaran();
+        for(Pendaftaran data_pendaftaran : s){
+        Object[] rowData = new Object[]{
+                data_pendaftaran.get_siswa().getId_Siswa(),
+                data_pendaftaran.getId_pendaftaran(),
+                data_pendaftaran.getTanggal_daftar(),
+                data_pendaftaran.getStatus_pendaftaran(),
+                data_pendaftaran.getProdi().getId_prodi()
+            };
+        data.addRow(rowData);
+        
+        }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

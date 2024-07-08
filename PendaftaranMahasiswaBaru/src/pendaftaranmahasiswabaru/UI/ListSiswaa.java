@@ -4,6 +4,12 @@
  */
 package pendaftaranmahasiswabaru.UI;
 
+import java.util.ArrayList;
+import java.util.List;
+import pendaftaranmahasiswabaru.Entity.Siswa;
+import pendaftaranmahasiswabaru.koneksi.Data;
+import javax.swing.table.*;
+
 /**
  *
  * @author acer
@@ -13,8 +19,31 @@ public class ListSiswaa extends javax.swing.JPanel {
     /**
      * Creates new form ListSiswaa
      */
+    private DefaultTableModel data ;
+    
     public ListSiswaa() {
         initComponents();
+        data = (DefaultTableModel) jTable1.getModel();
+        data.setRowCount(0);
+        List<Siswa> s = new ArrayList<Siswa>();
+        s = Data.getSiswa();
+        for(Siswa data_siswa : s){
+        Object[] rowData = new Object[]{
+                data_siswa.getId_Siswa(),
+                data_siswa.getNama_lengkap(),
+                data_siswa.getTempat_lahir(),
+                data_siswa.getTanggal_lahir(),
+                data_siswa.getJenis_kelamin(),
+                data_siswa.getAlamat(),
+                data_siswa.getAsal_sekolah(),
+                data_siswa.getJurusan_sekolah(),
+                data_siswa.getNilai_un(),
+                data_siswa.getNilai_raport(),
+            };
+        data.addRow(rowData);
+        
+        }
+        
     }
 
     /**
@@ -58,27 +87,29 @@ public class ListSiswaa extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 981, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

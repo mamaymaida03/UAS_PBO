@@ -16,14 +16,21 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         SiswaaUI Tambah = new SiswaaUI();
+        PendaftarannUI Pendaftaran = new PendaftarannUI();
         ProgramStudiiUI Programstudi = new ProgramStudiiUI();
         MahasiswaaUI Mahasiswa = new MahasiswaaUI();
         ListSiswaa Siswa = new ListSiswaa();
+        ListPendaftarann ListPendaftaran = new ListPendaftarann();
+        ListProgramStudii ListProgramStudi = new ListProgramStudii();
         ListMahasiswaa ListMahasiswa = new ListMahasiswaa();
         jTabbedPane1.addTab("Tambah Siswa", Tambah);
-        jTabbedPane1.addTab("Tambah Program Studi", Programstudi);
-        jTabbedPane1.addTab("List", Mahasiswa);
-        jTabbedPane1.addTab("List", Siswa);
+        jTabbedPane1.addTab("Pendaftaran", Pendaftaran);
+        jTabbedPane1.addTab("Program Studi", Programstudi);
+        jTabbedPane1.addTab("Data Mahasiswa", Mahasiswa);
+        jTabbedPane1.addTab("List Siswa", Siswa);
+        jTabbedPane1.addTab("List Pendaftran", ListPendaftaran);
+        jTabbedPane1.addTab("List Program Studi", ListProgramStudi);
+        jTabbedPane1.addTab("List Mahasiswa", ListMahasiswa);
         
     }
 

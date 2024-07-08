@@ -4,6 +4,12 @@
  */
 package pendaftaranmahasiswabaru.UI;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import pendaftaranmahasiswabaru.Entity.*;
+import pendaftaranmahasiswabaru.koneksi.Data;
+
 /**
  *
  * @author SUMARWAN
@@ -13,8 +19,24 @@ public class ListProgramStudii extends javax.swing.JPanel {
     /**
      * Creates new form ListProgramStudii
      */
+    private DefaultTableModel data ;
+    
     public ListProgramStudii() {
         initComponents();
+        data = (DefaultTableModel) jTable1.getModel();
+        data.setRowCount(0);
+        List<ProgramStudi> s = new ArrayList<ProgramStudi>();
+        s = Data.getProgramStudi();
+        for(ProgramStudi data_siswa : s){
+        Object[] rowData = new Object[]{
+                data_siswa.getId_prodi(),
+                data_siswa.getNama_prodi(),
+                data_siswa.getFakultas(),
+                data_siswa.getKuota(),
+            };
+        data.addRow(rowData);
+        
+        }
     }
 
     /**
