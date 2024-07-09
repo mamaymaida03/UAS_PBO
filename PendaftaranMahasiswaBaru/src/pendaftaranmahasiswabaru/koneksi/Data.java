@@ -10,6 +10,7 @@ import java.util.logging.Level;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Date;
 
 /**
  *
@@ -91,4 +92,132 @@ public class Data {
             return null;
         }
     }
+    
+    
+    public static void addSiswa( String nisn,String nama, String tempat_lahir, java.sql.Date tanggal_lahir, String jenis_kelamin, String alamat, String asal_sekolah, String jurusan_sekolah, float nilai_un, float nilai_raport){
+        try{
+            Connection c = StartConnection.getConn();
+            String sql="INSERT INTO `siswa`(`id_siswa`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `asal_sekolah`, `jurusan_sekolah`, `nilai_un`, `nilai_raport`) VALUES (?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, nisn);
+            ps.setString(2, nama);
+            ps.setString(3, tempat_lahir);
+            ps.setDate(4, tanggal_lahir);
+            ps.setString(5, jenis_kelamin);
+            ps.setString(6, alamat);
+            ps.setString(7, asal_sekolah);
+            ps.setString(8, jurusan_sekolah);
+            ps.setFloat(9, nilai_un);
+            ps.setFloat(10, nilai_raport);
+            ps.executeUpdate();
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            
+        }
+    }
+    
+    public static void addProdi( String id_prodi,String nama_prodi, String fakultas,int kuota){
+        try{
+            Connection c = StartConnection.getConn();
+            String sql="INSERT INTO `program_studi`(`id_prodi`, `nama_prodi`, `fakultas`, `kuota`) VALUES (?,?,?,?) ";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, id_prodi);
+            ps.setString(2, nama_prodi);
+            ps.setString(3, fakultas);
+            ps.setInt(4, kuota);
+            ps.executeUpdate();
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            
+        }
+    }
+    
+    public static void addPendaftarn( String nisn,String id_prodi, String id_pendaftaran){
+        try{
+            long waktudlmmilisec = System.currentTimeMillis();
+            Date now = new Date(waktudlmmilisec);
+            java.sql.Date sqlnow = new java.sql.Date(now.getTime());
+            Connection c = StartConnection.getConn();
+            String sql="INSERT INTO `pendaftaran`(`id_pendaftaran`, `id_siswa`, `tanggal_daftar`, `status_pendaftaran`, `id_prodi`) VALUES (?,?,?,?,?) ";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, id_pendaftaran);
+            ps.setString(2, nisn);
+            ps.setDate(3, sqlnow);
+            ps.setString(4, "Terdaftar");
+            ps.setString(5, id_prodi);
+            ps.executeUpdate();
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            
+        }
+    }
+    
+    public static void UpdatePendaftaran( String status, String id_pendaftaran){
+        try{
+            Connection c = StartConnection.getConn();
+            String sql="UPDATE `pendaftaran` SET `status_pendaftaran`= ? WHERE id_pendaftaran  = ? ";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setString(2, id_pendaftaran);
+            ps.executeUpdate();
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            
+        }
+    }
+    
+    public static void addMahasiswa(String id_pendaftaran){
+        try{
+            Connection c = StartConnection.getConn();
+            String sqlpen="select * from pendaftaran where id_pendaftaran = ?";
+            PreparedStatement psgetdata = c.prepareStatement(sqlpen);
+            psgetdata.setString(1, id_pendaftaran);
+            ResultSet rs = psgetdata.executeQuery();
+            
+            String sqlsis="select * from siswa where id_siswa = ?";
+            PreparedStatement psgetsis = c.prepareStatement(sqlsis);
+            String id_siswa = "";
+            String id_prodi = "";
+            while(rs.next()){
+                id_siswa = rs.getString("id_siswa");
+                id_prodi = rs.getString("id_prodi");
+            }
+            psgetsis.setString(1, id_siswa);
+            ResultSet rssis = psgetsis.executeQuery();
+            
+            String sqlprod="select * from program_studi where id_prodi = ?";
+            PreparedStatement psgetprod = c.prepareStatement(sqlprod);
+            psgetprod.setString(1, id_prodi);
+            ResultSet rsprod = psgetprod.executeQuery();
+            
+            String sql="INSERT INTO `mahasiswa`(`nim`, `nama_lengkap`, `id_pendaftaran`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`) VALUES (?,?,?,?,?,?,?) ";
+            PreparedStatement ps = c.prepareStatement(sql);
+            String NIM = id_prodi+"."+id_siswa;
+            String Nama = "";
+            String Tempat_lahir = "";
+            java.sql.Date Tanggal_Lahir = new java.sql.Date(0);
+            String Jenis_Kelamin = "";
+            String Alamat = "";
+            ps.setString(1, NIM);
+            while(rssis.next()){
+                Nama = rssis.getString("nama_lengkap");
+                Tempat_lahir = rssis.getString("tempat_lahir");
+                Tanggal_Lahir = rssis.getDate("tanggal_lahir");
+                Jenis_Kelamin = rssis.getString("jenis_kelamin");
+                Alamat = rssis.getString("alamat");
+            }
+            ps.setString(2, Nama);
+            ps.setString(3, id_pendaftaran);
+            ps.setString(4, Tempat_lahir);
+            ps.setDate(5, Tanggal_Lahir);
+            ps.setString(6, Jenis_Kelamin);
+            ps.setString(7, Alamat);
+            ps.executeUpdate();
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            
+        }
+    }
+    
+    
 }

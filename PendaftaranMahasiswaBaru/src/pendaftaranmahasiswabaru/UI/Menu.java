@@ -16,7 +16,7 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         SiswaaUI Tambah = new SiswaaUI();
-        PendaftarannUI Pendaftaran = new PendaftarannUI();
+        PendaftaranUI Pendaftaran = new PendaftaranUI();
         ProgramStudiiUI Programstudi = new ProgramStudiiUI();
         MahasiswaaUI Mahasiswa = new MahasiswaaUI();
         ListSiswaa Siswa = new ListSiswaa();

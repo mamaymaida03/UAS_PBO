@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package pendaftaranmahasiswabaru.UI;
-
+import pendaftaranmahasiswabaru.koneksi.Data;
 /**
  *
  * @author acer
@@ -44,10 +44,11 @@ public class SiswaaUI extends javax.swing.JPanel {
         jTextField7 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("FORMULIR CALON MAHASISWA");
@@ -111,6 +112,8 @@ public class SiswaaUI extends javax.swing.JPanel {
             }
         });
 
+        jLabel12.setText("YEAR-MONTH-DAY");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,14 +140,16 @@ public class SiswaaUI extends javax.swing.JPanel {
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                             .addComponent(jTextField2)
                             .addComponent(jTextField3)
-                            .addComponent(jTextField11)
+                            .addComponent(jTextField4)
                             .addComponent(jTextField5)
                             .addComponent(jTextField6)
-                            .addComponent(jTextField7)
                             .addComponent(jTextField8)
                             .addComponent(jTextField9)
-                            .addComponent(jTextField10))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                            .addComponent(jTextField10)
+                            .addComponent(jTextField7))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +171,8 @@ public class SiswaaUI extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -199,8 +205,38 @@ public class SiswaaUI extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        java.sql.Date convert_date = java.sql.Date.valueOf(jTextField4.getText());
+        float nilai_un = Float.parseFloat(jTextField9.getText());
+        float nilai_raport = Float.parseFloat(jTextField10.getText());
+        Data.addSiswa(
+                jTextField1.getText(),
+                jTextField2.getText(),
+                jTextField3.getText(),
+                convert_date,
+                jTextField5.getText(),
+                jTextField6.getText(),
+                jTextField7.getText(),
+                jTextField8.getText(),
+                nilai_un,
+                nilai_raport
+                );
+        clear();
+    
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
+    private void clear(){
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+    jTextField5.setText("");
+    jTextField6.setText("");
+    jTextField7.setText("");
+    jTextField8.setText("");
+    jTextField9.setText("");
+    jTextField10.setText("");
+    }
+    
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
@@ -227,6 +263,7 @@ public class SiswaaUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -237,9 +274,9 @@ public class SiswaaUI extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;

@@ -138,11 +138,17 @@ public class ListPendaftarann extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here diterima:
+        
+        String id_pilih = (String) data.getValueAt(jTable1.getSelectedRow(), 1);
+        Data.UpdatePendaftaran("diTerima", id_pilih);
+        Data.addMahasiswa(id_pilih);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here ditolak:
+        String id_pilih = (String) data.getValueAt(jTable1.getSelectedRow(), 1);
+        Data.UpdatePendaftaran("diTolak", id_pilih);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
