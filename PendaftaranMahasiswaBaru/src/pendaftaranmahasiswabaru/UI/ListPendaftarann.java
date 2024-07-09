@@ -57,6 +57,7 @@ public class ListPendaftarann extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -100,6 +101,14 @@ public class ListPendaftarann extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton4.setText("Refresh");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,8 +120,10 @@ public class ListPendaftarann extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
-                .addContainerGap(416, Short.MAX_VALUE))
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4)))
+                .addContainerGap(331, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -127,7 +138,8 @@ public class ListPendaftarann extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 284, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(15, 15, 15))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -151,11 +163,31 @@ public class ListPendaftarann extends javax.swing.JPanel {
         Data.UpdatePendaftaran("diTolak", id_pilih);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+            // TODO add your handling code here:
+        data.setRowCount(0);
+        List<Pendaftaran> s = new ArrayList<Pendaftaran>();
+        s = Data.getPendaftaran();
+        for(Pendaftaran data_pendaftaran : s){
+        Object[] rowData = new Object[]{
+                data_pendaftaran.get_siswa().getId_Siswa(),
+                data_pendaftaran.getId_pendaftaran(),
+                data_pendaftaran.getTanggal_daftar(),
+                data_pendaftaran.getStatus_pendaftaran(),
+                data_pendaftaran.getProdi().getId_prodi()
+            };
+        data.addRow(rowData);
+        
+        }
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

@@ -4,6 +4,9 @@
  */
 package pendaftaranmahasiswabaru.UI;
 
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
 /**
  *
  * @author acer
@@ -18,7 +21,6 @@ public class Menu extends javax.swing.JFrame {
         SiswaaUI Tambah = new SiswaaUI();
         PendaftaranUI Pendaftaran = new PendaftaranUI();
         ProgramStudiiUI Programstudi = new ProgramStudiiUI();
-        MahasiswaaUI Mahasiswa = new MahasiswaaUI();
         ListSiswaa Siswa = new ListSiswaa();
         ListPendaftarann ListPendaftaran = new ListPendaftarann();
         ListProgramStudii ListProgramStudi = new ListProgramStudii();
@@ -26,7 +28,6 @@ public class Menu extends javax.swing.JFrame {
         jTabbedPane1.addTab("Tambah Siswa", Tambah);
         jTabbedPane1.addTab("Pendaftaran", Pendaftaran);
         jTabbedPane1.addTab("Program Studi", Programstudi);
-        jTabbedPane1.addTab("Data Mahasiswa", Mahasiswa);
         jTabbedPane1.addTab("List Siswa", Siswa);
         jTabbedPane1.addTab("List Pendaftran", ListPendaftaran);
         jTabbedPane1.addTab("List Program Studi", ListProgramStudi);
@@ -64,7 +65,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,7 +106,7 @@ public class Menu extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JTabbedPane jTabbedPane1;
