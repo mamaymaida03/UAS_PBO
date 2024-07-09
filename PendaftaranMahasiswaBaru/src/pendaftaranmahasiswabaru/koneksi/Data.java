@@ -219,5 +219,28 @@ public class Data {
         }
     }
     
+    public static void UpdateMahasiswa( String NIM,String Nama, String ID_Pendaftaran, String Tempat_Lahir, java.sql.Date Tanggal_Lahir, String Jenis_Kelamin, String Alamat, String No_Telepon){
+        try{
+//            long waktudlmmilisec = System.currentTimeMillis();
+//            Date now = new Date(waktudlmmilisec);
+//            java.sql.Date sqlnow = new java.sql.Date(now.getTime());
+            Connection c = StartConnection.getConn();
+            String sql="UPDATE `mahasiswa` SET `nama_lengkap`=?,`id_pendaftaran`=?,`tempat_lahir`=?,`tanggal_lahir`=?,`jenis_kelamin`=?,`alamat`=?,`no_telepon`=? WHERE nim = ?";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, Nama);
+            ps.setString(2, ID_Pendaftaran);
+            ps.setString(3, Tempat_Lahir);
+            ps.setDate(4, Tanggal_Lahir);
+            ps.setString(5, Jenis_Kelamin);
+            ps.setString(6, Alamat);
+            ps.setString(7, No_Telepon);
+            ps.setString(8, NIM);
+            ps.executeUpdate();
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            
+        }
+    }
+    
     
 }
