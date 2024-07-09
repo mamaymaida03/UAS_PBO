@@ -4,6 +4,13 @@
  */
 package pendaftaranmahasiswabaru.UI;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import pendaftaranmahasiswabaru.Entity.Mahasiswa;
+import pendaftaranmahasiswabaru.koneksi.Data;
+
+
 /**
  *
  * @author acer
@@ -13,8 +20,28 @@ public class ListMahasiswaa extends javax.swing.JPanel {
     /**
      * Creates new form ListMahasiswaa
      */
+    private DefaultTableModel data ;
+    
     public ListMahasiswaa() {
         initComponents();
+        data = (DefaultTableModel) jTable1.getModel();
+        data.setRowCount(0);
+        List<Mahasiswa> s = new ArrayList<Mahasiswa>();
+        s = Data.getMahasiswa();
+        for(Mahasiswa data_mahasiswa : s){
+        Object[] rowData = new Object[]{
+                data_mahasiswa.getNim(),
+                data_mahasiswa.getNama_lengkap(),
+                data_mahasiswa.getPendaftaran().getId_pendaftaran(),
+                data_mahasiswa.getTempat_lahir(),
+                data_mahasiswa.getTanggal_lahir(),
+                data_mahasiswa.getJenis_kelamin(),
+                data_mahasiswa.getAlamat(),
+                data_mahasiswa.getNo_telepon()
+            };
+        data.addRow(rowData);
+        
+        }
     }
 
     /**

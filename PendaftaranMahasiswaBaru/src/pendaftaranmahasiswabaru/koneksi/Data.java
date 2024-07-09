@@ -69,4 +69,26 @@ public class Data {
             return null;
         }
     }
+    
+    public static List<Mahasiswa> getMahasiswa(){
+        List<Mahasiswa> ListMahasiswa = new ArrayList<>();
+        try{
+            Connection c = StartConnection.getConn();
+            String sql="select * from mahasiswa as mhs left join pendaftaran as pen on mhs.id_pendaftaran=pen.id_pendaftaran";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+            Pendaftaran p = new Pendaftaran();
+            p.setId_pendaftaran(rs.getString("id_pendaftaran"));
+            p.setStatus_pendaftaran(rs.getString("status_pendaftaran"));
+            p.setTanggal_daftar(rs.getDate("tanggal_daftar"));
+            Mahasiswa s = new Mahasiswa(rs.getString("nim"),rs.getString("nama_lengkap"),p,rs.getString("tempat_lahir"),rs.getDate("tanggal_lahir"),rs.getString("jenis_kelamin"),rs.getString("alamat"),rs.getString("no_telepon"));
+            ListMahasiswa.add(s);
+            }
+            return ListMahasiswa;
+            }catch (SQLException ex) {
+            Logger.getLogger(Data.class.getName()).log(Level.SEVERE, null,ex);
+            return null;
+        }
+    }
 }

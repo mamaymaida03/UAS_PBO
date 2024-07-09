@@ -50,11 +50,11 @@ public class Mahasiswa {
         this.nama_lengkap = nama_lengkap;
     }
 
-    public Pendaftaran getId_pendaftaran() {
+    public Pendaftaran getPendaftaran() {
         return pendaftaran;
     }
 
-    public void setId_pendaftaran( Pendaftaran pendaftaran) {
+    public void setPendaftaran( Pendaftaran pendaftaran) {
         this.pendaftaran = pendaftaran;
     }
 
